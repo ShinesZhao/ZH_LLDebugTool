@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "ZH_LLDebugTool"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "LLDebugTool adapter"
   spec.description  = "UIBarbutton adapter"
   spec.homepage     = "https://github.com/ShinesZhao/ZH_LLDebugTool"
