@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.author       = { "User" => "472059581@qq.com" }
   spec.platform     = :ios, "10.0"
   spec.source       = { :git => "https://github.com/ShinesZhao/ZH_LLDebugTool.git", :tag => "#{spec.version}" }
-  spec.source_files  = "ZH_LLDebugTool/*.{h,m,swift}"
+  spec.source_files  = "ZH_LLDebugTool/*.{h,m,swift},"ZH_LLDebugTool/Core/*.{h,m,swift},"ZH_LLDebugTool/DebugTool/*.{h,m,swift}"
   spec.requires_arc = true
   spec.dependency "FMDB"
 
