@@ -55,7 +55,7 @@
 		364570F82313B80800C29200 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 364570F42313B80800C29200 /* README.md */; };
 		364570F92313B80800C29200 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 364570F52313B80800C29200 /* CHANGELOG.md */; };
 		364570FA2313B80800C29200 /* README-cn.md in Resources */ = {isa = PBXBuildFile; fileRef = 364570F62313B80800C29200 /* README-cn.md */; };
-		364570FC2313B82300C29200 /* LLDebugTool.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 364570FB2313B82200C29200 /* LLDebugTool.podspec */; };
+		364570FC2313B82300C29200 /* ZH_LLDebugTool.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 364570FB2313B82200C29200 /* ZH_LLDebugTool.podspec */; };
 		364AC6F0237CE50F007F0F29 /* LLRouter+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 364AC6EF237CE50F007F0F29 /* LLRouter+Log.m */; };
 		364AC6F3237CE8F5007F0F29 /* LLRouter+Crash.m in Sources */ = {isa = PBXBuildFile; fileRef = 364AC6F2237CE8F5007F0F29 /* LLRouter+Crash.m */; };
 		364AC6FA237CFB84007F0F29 /* LLRouter+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 364AC6F9237CFB84007F0F29 /* LLRouter+Screenshot.m */; };
@@ -382,7 +382,7 @@
 		364570F42313B80800C29200 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		364570F52313B80800C29200 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		364570F62313B80800C29200 /* README-cn.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "README-cn.md"; sourceTree = "<group>"; };
-		364570FB2313B82200C29200 /* LLDebugTool.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LLDebugTool.podspec; sourceTree = "<group>"; };
+		364570FB2313B82200C29200 /* ZH_LLDebugTool.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZH_LLDebugTool.podspec; sourceTree = "<group>"; };
 		364AC6EE237CE50F007F0F29 /* LLRouter+Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LLRouter+Log.h"; sourceTree = "<group>"; };
 		364AC6EF237CE50F007F0F29 /* LLRouter+Log.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LLRouter+Log.m"; sourceTree = "<group>"; };
 		364AC6F1237CE8F5007F0F29 /* LLRouter+Crash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LLRouter+Crash.h"; sourceTree = "<group>"; };
@@ -1443,7 +1443,7 @@
 		C43BA7FE205AB095006307BE = {
 			isa = PBXGroup;
 			children = (
-				364570FB2313B82200C29200 /* LLDebugTool.podspec */,
+				364570FB2313B82200C29200 /* ZH_LLDebugTool.podspec */,
 				364570F52313B80800C29200 /* CHANGELOG.md */,
 				364570F32313B80800C29200 /* LICENSE */,
 				364570F62313B80800C29200 /* README-cn.md */,
@@ -2475,7 +2475,7 @@
 				C4C4F82A248CE93F00558753 /* LLDebugTool.plist in Resources */,
 				3691A61B20C7E63B00E22192 /* InfoPlist.strings in Resources */,
 				C43BA817205AB095006307BE /* LaunchScreen.storyboard in Resources */,
-				364570FC2313B82300C29200 /* LLDebugTool.podspec in Resources */,
+				364570FC2313B82300C29200 /* ZH_LLDebugTool.podspec in Resources */,
 				364570F72313B80800C29200 /* LICENSE in Resources */,
 				C43BA814205AB095006307BE /* Assets.xcassets in Resources */,
 				364570F92313B80800C29200 /* CHANGELOG.md in Resources */,
