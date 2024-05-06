@@ -5,9 +5,9 @@ Pod::Spec.new do |s|
   s.homepage            = "https://github.com/ShinesZhao/ZH_LLDebugTool"
   s.license             = "MIT"
   s.author              = { "User" => "472059581@qq.com" }
-  s.social_media_url    = "https://github.com/HDB-Li"
+  s.social_media_url    = "https://github.com/ShinesZhao"
   s.platform            = :ios, "10.0"
-  s.source              = { :git => "https://github.com/ShinesZhao/ZH_LLDebugTool.git", :tag => "#{spec.version}" }
+  s.source              = { :git => "https://github.com/ShinesZhao/ZH_LLDebugTool.git", :tag => "#{s.version}" }
   s.requires_arc        = true
 
   s.subspec 'Network' do |ss|
