@@ -83,8 +83,9 @@
     if (self.isSelectEnable) {
         if (sender.isSelected) {
             //自定义UIBarbuttonItem
-            if(!self.selectAllItem.customView){
-                UIButton *btn = (UIButton *)self.selectAllItem;
+            UIView *view = self.selectAllItem.customView;
+            if(view && [view isKindOfClass:[UIButton class]]){
+                UIButton *btn = (UIButton *)view;
                 [btn setTitle:self.selectAllString forState:UIControlStateNormal];
                 [btn sizeToFit];
             }else{
@@ -292,10 +293,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.tableView.isEditing) {
+        id<LLTableViewSelectableDelegate> model = self.datas[indexPath.row];
+        [model setSelected:YES];
         if (self.indexPathsForSelectedRows.count == self.datas.count) {
             //自定义UIBarbuttonItem
-            if(!self.selectAllItem.customView){
-                UIButton *btn = (UIButton *)self.selectAllItem;
+            UIView *view = self.selectAllItem.customView;
+            if(view && [view isKindOfClass:[UIButton class]]){
+                UIButton *btn = (UIButton *)view;
                 if ([btn.titleLabel.text isEqualToString:self.selectAllString]) {
                     [btn setTitle:self.cancelAllString forState:UIControlStateNormal];
                     [btn sizeToFit];
@@ -309,8 +313,6 @@
         }
         self.shareItem.enabled = YES;
         self.deleteItem.enabled = YES;
-        id<LLTableViewSelectableDelegate> model = self.datas[indexPath.row];
-        [model setSelected:YES];
     } else {
         if (self.isSelectEnable) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -323,8 +325,9 @@
         id<LLTableViewSelectableDelegate> model = self.datas[indexPath.row];
         [model setSelected:NO];
         //自定义UIBarbuttonItem
-        if(!self.selectAllItem.customView){
-            UIButton *btn = (UIButton *)self.selectAllItem;
+        UIView *view = self.selectAllItem.customView;
+        if(view && [view isKindOfClass:[UIButton class]]){
+            UIButton *btn = (UIButton *)view;
             if (![btn.titleLabel.text isEqualToString:self.selectAllString]) {
                 [btn setTitle:self.selectAllString forState:UIControlStateNormal];
                 [btn sizeToFit];
@@ -374,8 +377,9 @@
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidChange:(NSString *)text {
     //自定义UIBarbuttonItem
-    if(!self.selectAllItem.customView){
-        UIButton *btn = (UIButton *)self.selectAllItem;
+    UIView *view = self.selectAllItem.customView;
+    if(view && [view isKindOfClass:[UIButton class]]){
+        UIButton *btn = (UIButton *)view;
         if ([btn.titleLabel.text isEqualToString:self.cancelAllString]) {
             [btn setTitle:self.selectAllString forState:UIControlStateNormal];
             [btn sizeToFit];
