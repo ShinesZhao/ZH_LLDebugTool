@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
-  s.name                = "LLDebugTool"
-  s.version             = "1.3.8.1"
-  s.summary             = "LLDebugTool is a debugging tool for developers and testers that can help you analyze and manipulate data in non-xcode situations."
-  s.homepage            = "https://github.com/HDB-Li/LLDebugTool"
+  s.name                = "ZH_LLDebugTool"
+  s.version             = "0.0.3"
+  s.summary             = "ZH_LLDebugTool is a debugging tool for developers and testers that can help you analyze and manipulate data in non-xcode situations."
+  s.homepage            = "https://github.com/ShinesZhao/ZH_LLDebugTool"
   s.license             = "MIT"
-  s.author              = { "HDB-Li" => "llworkinggroup1992@gmail.com" }
+  s.author              = { "User" => "472059581@qq.com" }
   s.social_media_url    = "https://github.com/HDB-Li"
-  s.platform            = :ios, "8.0"
-  s.source              = { :git => "https://github.com/HDB-Li/LLDebugTool.git", :tag => s.version }
+  s.platform            = :ios, "10.0"
+  s.source              = { :git => "https://github.com/ShinesZhao/ZH_LLDebugTool.git", :tag => "#{spec.version}" }
   s.requires_arc        = true
 
   s.subspec 'Network' do |ss|

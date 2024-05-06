@@ -82,7 +82,15 @@
     [self.tableView reloadData];
     if (self.isSelectEnable) {
         if (sender.isSelected) {
-            self.selectAllItem.title = self.selectAllString;
+            //自定义UIBarbuttonItem
+            if(!self.selectAllItem.customView){
+                UIButton *btn = (UIButton *)self.selectAllItem;
+                [btn setTitle:self.selectAllString forState:UIControlStateNormal];
+                [btn sizeToFit];
+            }else{
+                //系统UIBarbuttonItem
+                self.selectAllItem.title = self.selectAllString;
+            }
             self.selectAllItem.enabled = (self.datas.count != 0);
             self.shareItem.enabled = NO;
             self.deleteItem.enabled = NO;
@@ -173,6 +181,25 @@
 }
 
 - (void)selectAllItemClick:(UIBarButtonItem *)sender {
+    //防止导航栏UIBarButtonItem用的customerView添加
+    if([sender isKindOfClass:[UIButton class]]){
+        UIButton *btn = (UIButton *)sender;
+        if ([btn.titleLabel.text isEqualToString:self.selectAllString]) {
+            [btn setTitle:self.cancelAllString forState:UIControlStateNormal];
+            [btn sizeToFit];
+            [self updateTableViewCellSelectedStyle:YES];
+            self.shareItem.enabled = YES;
+            self.deleteItem.enabled = YES;
+        } else {
+            [btn setTitle:self.selectAllString forState:UIControlStateNormal];
+            [btn sizeToFit];
+            [self updateTableViewCellSelectedStyle:NO];
+            self.shareItem.enabled = NO;
+            self.deleteItem.enabled = NO;
+        }
+        return;
+    }
+    //系统UIBarButtonItem
     if ([sender.title isEqualToString:self.selectAllString]) {
         sender.title = self.cancelAllString;
         [self updateTableViewCellSelectedStyle:YES];
@@ -266,8 +293,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.tableView.isEditing) {
         if (self.indexPathsForSelectedRows.count == self.datas.count) {
-            if ([self.selectAllItem.title isEqualToString:self.selectAllString]) {
-                self.selectAllItem.title = self.cancelAllString;
+            //自定义UIBarbuttonItem
+            if(!self.selectAllItem.customView){
+                UIButton *btn = (UIButton *)self.selectAllItem;
+                if ([btn.titleLabel.text isEqualToString:self.selectAllString]) {
+                    [btn setTitle:self.cancelAllString forState:UIControlStateNormal];
+                    [btn sizeToFit];
+                }
+            }else{
+            //系统UIBarbuttonItem
+                if ([self.selectAllItem.title isEqualToString:self.selectAllString]) {
+                    self.selectAllItem.title = self.cancelAllString;
+                }
             }
         }
         self.shareItem.enabled = YES;
@@ -285,8 +322,18 @@
     if (self.tableView.isEditing) {
         id<LLTableViewSelectableDelegate> model = self.datas[indexPath.row];
         [model setSelected:NO];
-        if (![self.selectAllItem.title isEqualToString:self.selectAllString]) {
-            self.selectAllItem.title = self.selectAllString;
+        //自定义UIBarbuttonItem
+        if(!self.selectAllItem.customView){
+            UIButton *btn = (UIButton *)self.selectAllItem;
+            if (![btn.titleLabel.text isEqualToString:self.selectAllString]) {
+                [btn setTitle:self.selectAllString forState:UIControlStateNormal];
+                [btn sizeToFit];
+            }
+        }else{
+        //系统UIBarbuttonItem
+            if (![self.selectAllItem.title isEqualToString:self.selectAllString]) {
+                self.selectAllItem.title = self.selectAllString;
+            }
         }
         if (self.indexPathsForSelectedRows.count == 0) {
             self.shareItem.enabled = NO;
@@ -326,9 +373,20 @@
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidChange:(NSString *)text {
-    if ([self.selectAllItem.title isEqualToString:self.cancelAllString]) {
-        self.selectAllItem.title = self.selectAllString;
+    //自定义UIBarbuttonItem
+    if(!self.selectAllItem.customView){
+        UIButton *btn = (UIButton *)self.selectAllItem;
+        if ([btn.titleLabel.text isEqualToString:self.cancelAllString]) {
+            [btn setTitle:self.selectAllString forState:UIControlStateNormal];
+            [btn sizeToFit];
+        }
+    }else{
+    //系统UIBarbuttonItem
+        if ([self.selectAllItem.title isEqualToString:self.cancelAllString]) {
+            self.selectAllItem.title = self.selectAllString;
+        }
     }
+    
     if (self.isDeleteEnable && self.deleteItem.isEnabled) {
         self.deleteItem.enabled = NO;
         self.shareItem.enabled = NO;
