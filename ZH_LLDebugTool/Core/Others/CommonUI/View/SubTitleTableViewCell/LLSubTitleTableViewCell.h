@@ -43,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Title content.
 @property (copy, nonatomic, nullable) NSString *contentText;
 
+/// Title content color.
+@property (strong, nonatomic) UIColor *contentTextColor;
+
 /// Action delegate.
 @property (weak, nonatomic, nullable) id <LLSubTitleTableViewCellDelegate> delegate;
 

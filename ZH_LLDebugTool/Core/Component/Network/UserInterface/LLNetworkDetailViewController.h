@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The model  use to detail.
 @property (nonatomic, strong) LLNetworkModel *model;
 
+/// request failure
+@property (nonatomic, assign) BOOL requestFailure;
+
 @end
 
 NS_ASSUME_NONNULL_END

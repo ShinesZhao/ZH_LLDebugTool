@@ -43,6 +43,8 @@ static NSString *const kNetworkImageCellID = @"NetworkImageCellID";
 
 @property (nonatomic, strong) NSArray *canCopyArray;
 
+@property (nonatomic, strong) UIColor *failureTextColor;
+
 @end
 
 @implementation LLNetworkDetailViewController
@@ -50,9 +52,11 @@ static NSString *const kNetworkImageCellID = @"NetworkImageCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = LLLocalizedString(@"network.detail");
+    self.failureTextColor = [UIColor colorWithRed:252/255.f green:74/255.f blue:91/255.f alpha:1];
     self.tableView.dataSource = self;
     [self.tableView registerClass:[LLNetworkImageCell class] forCellReuseIdentifier:kNetworkImageCellID];
     [self.tableView registerClass:[LLSubTitleTableViewCell class] forCellReuseIdentifier:kNetworkContentCellID];
+    if(self.requestFailure) self.tableView.separatorColor = self.failureTextColor;
     [self loadData];
 }
 
@@ -81,6 +85,11 @@ static NSString *const kNetworkImageCellID = @"NetworkImageCellID";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.titleLabel.text = self.titleArray[indexPath.row];
     cell.contentText = obj;
+    // 失败字体颜色
+    if(self.requestFailure){
+        cell.titleLabel.textColor = self.failureTextColor;
+        cell.contentTextColor = self.failureTextColor;
+    }
     cell.delegate = self;
     return cell;
 }

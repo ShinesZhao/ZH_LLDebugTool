@@ -27,7 +27,7 @@
 #import "LLFactory.h"
 #import "LLConfig.h"
 #import "LLConst.h"
-
+#import "LLThemeManager.h"
 @interface LLNetworkCell ()
 
 @property (nonatomic, strong) UILabel *hostLabel;
@@ -35,6 +35,8 @@
 @property (nonatomic, strong) UILabel *paramLabel;
 
 @property (nonatomic, strong) UILabel *dateLabel;
+
+@property (nonatomic, strong) UIView *coverLineView;
 
 @property (strong, nonatomic) LLNetworkModel *model;
 
@@ -48,6 +50,29 @@
         self.hostLabel.text = _model.url.host;
         self.paramLabel.text = _model.url.path;
         self.dateLabel.text = [_model.startDate substringFromIndex:11];
+        
+        // 失败code拼接
+        BOOL requestSuccess = [_model.statusCode integerValue] == 200 ? YES : NO;
+        if(!requestSuccess) self.hostLabel.text = [_model.url.host stringByAppendingFormat:@"(%@)",_model.statusCode];
+        
+        // 文案 颜色更改
+        UIColor *textColor = requestSuccess ? [LLThemeManager shared].primaryColor : [UIColor colorWithRed:252/255.f green:74/255.f blue:91/255.f alpha:1];
+        self.hostLabel.textColor= textColor;
+        self.paramLabel.textColor= textColor;
+        self.dateLabel.textColor= textColor;
+        
+        for (UIView *subview in self.subviews) {
+            // > 颜色更改
+            if ([subview isKindOfClass: [UIButton class]]) {
+                UIButton *button = (UIButton *)subview;
+                if (button.currentBackgroundImage != nil) {
+                    [button setTintColor:textColor];
+                }
+            }
+        }
+        
+        // 线条颜色
+        self.coverLineView.backgroundColor = textColor;
     }
 }
 
@@ -60,10 +85,12 @@
     [self.contentView addSubview:self.hostLabel];
     [self.contentView addSubview:self.dateLabel];
     [self.contentView addSubview:self.paramLabel];
+    [self.contentView addSubview:self.coverLineView];
     
     [self addHostLabelConstraints];
     [self addDateLabelConstraints];
     [self addParamLabelConstraints];
+    [self addCoverLineViewConstraints];
 }
 
 - (void)addHostLabelConstraints {
@@ -90,6 +117,16 @@
     bottom.priority = UILayoutPriorityDefaultHigh;
     self.paramLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.paramLabel.superview addConstraints:@[left, right, top, bottom]];
+}
+
+- (void)addCoverLineViewConstraints {
+    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.coverLineView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.coverLineView.superview attribute:NSLayoutAttributeLeading multiplier:1 constant:10];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.coverLineView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.coverLineView.superview attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self.coverLineView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:[[UIScreen mainScreen] bounds].size.width-10];
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.coverLineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0.5];
+    bottom.priority = UILayoutPriorityDefaultHigh;
+    self.coverLineView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.coverLineView.superview addConstraints:@[left,width, bottom,height]];
 }
 
 #pragma mark - Getters and setters
@@ -120,6 +157,13 @@
         _paramLabel.lineBreakMode = NSLineBreakByCharWrapping;
     }
     return _paramLabel;
+}
+
+- (UIView *)coverLineView{
+    if (!_coverLineView) {
+        _coverLineView = [LLFactory getView];
+    }
+    return _coverLineView;
 }
 
 @end

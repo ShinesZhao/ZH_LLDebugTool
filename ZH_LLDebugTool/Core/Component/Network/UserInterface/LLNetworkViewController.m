@@ -74,6 +74,7 @@ static NSString *const kNetworkCellID = @"NetworkCellID";
     }
 
     [self.tableView registerClass:[LLNetworkCell class] forCellReuseIdentifier:kNetworkCellID];
+    self.tableView.separatorColor = UIColor.clearColor; //自定义cell分割线，所以清除
     
     self.filterView = [[LLNetworkFilterView alloc] initWithFrame:CGRectMake(0, self.searchTextField.LL_bottom + kLLGeneralMargin, LL_SCREEN_WIDTH, 40)];
     __weak typeof(self) weakSelf = self;
@@ -143,8 +144,10 @@ static NSString *const kNetworkCellID = @"NetworkCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     if (self.tableView.isEditing == NO) {
+        LLNetworkModel *model = self.datas[indexPath.row];
         LLNetworkDetailViewController *vc = [[LLNetworkDetailViewController alloc] init];
-        vc.model = self.datas[indexPath.row];
+        vc.model = model;
+        vc.requestFailure = [model.statusCode integerValue]==200 ? NO : YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

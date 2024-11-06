@@ -63,6 +63,11 @@
     }
 }
 
+- (void)setContentTextColor:(UIColor *)contentTextColor{
+    _contentTextColor = contentTextColor;
+    self.contentTextView.textColor = contentTextColor;
+}
+
 #pragma mark - Over write
 - (void)initUI {
     [super initUI];

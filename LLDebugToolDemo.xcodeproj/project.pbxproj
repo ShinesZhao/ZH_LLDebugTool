@@ -1448,7 +1448,7 @@
 				364570F32313B80800C29200 /* LICENSE */,
 				364570F62313B80800C29200 /* README-cn.md */,
 				364570F42313B80800C29200 /* README.md */,
-				C44F40542152AA7000153F46 /* LLDebugTool */,
+				C44F40542152AA7000153F46 /* ZH_LLDebugTool */,
 				C43BA809205AB095006307BE /* LLDebugToolDemo */,
 				36E248862123BAE300D03F44 /* LLDebugToolDemoTests */,
 				36E248942123BAE900D03F44 /* LLDebugToolDemoUITests */,
@@ -1490,14 +1490,14 @@
 			path = LLDebugToolDemo;
 			sourceTree = "<group>";
 		};
-		C44F40542152AA7000153F46 /* LLDebugTool */ = {
+		C44F40542152AA7000153F46 /* ZH_LLDebugTool */ = {
 			isa = PBXGroup;
 			children = (
 				C49854A922ED8D0E00E9FBE2 /* LLDebug.h */,
 				C49854A522ED8D0E00E9FBE2 /* DebugTool */,
 				C498551522ED8D0E00E9FBE2 /* Core */,
 			);
-			path = LLDebugTool;
+			path = ZH_LLDebugTool;
 			sourceTree = "<group>";
 		};
 		C49854A522ED8D0E00E9FBE2 /* DebugTool */ = {
